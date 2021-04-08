@@ -1,0 +1,5 @@
+__pycache__/*
+bart_qg/checkpoints/*
+cached_dev_squad1.0_384
+qa_models/squad1.0/*
+utput
