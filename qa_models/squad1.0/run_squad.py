@@ -68,9 +68,6 @@ def set_seed(args):
 
 
 def to_list(tensor):
-    logger.info("[DEBUG]: TENSOR ")
-    logger.info("[DEBUG] tensor type: " + str(type(tensor)))
-    logger.info("[DEBUG] tensor: " + tensor)
     return tensor.detach().cpu().tolist()
 
 
@@ -318,6 +315,8 @@ def evaluate(args, model, tokenizer, prefix=""):
                     )
             outputs = model(**inputs)
 
+        logger.info("[DEBUG] Outputs: " + str(outputs))
+        logger.info("[DEBUG] Outputs: " + str(type(outputs[0])))
         for i, feature_index in enumerate(feature_indices):
             eval_feature = features[feature_index.item()]
             unique_id = int(eval_feature.unique_id)
