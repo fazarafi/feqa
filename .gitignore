@@ -2,4 +2,6 @@ __pycache__/*
 bart_qg/checkpoints/*
 cached_dev_squad1.0_384
 qa_models/squad1.0/*
+!qa_models/squad1.0/evaluate-v1.1.py
+!qa_models/squad1.0/run_squad.py
 utput
