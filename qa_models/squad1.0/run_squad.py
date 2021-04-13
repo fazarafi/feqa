@@ -70,7 +70,7 @@ def set_seed(args):
 def to_list(tensor):
     logger.info("[DEBUG] Tensor: ", tensor)
     logger.info("[DEBUG] Tensor: ", str(type(tensor)))
-    return tensor.detach().cpu().tolist()
+    return tensor.tolist()
 
 
 def train(args, train_dataset, model, tokenizer):
