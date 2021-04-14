@@ -71,7 +71,7 @@ def to_list(tensor):
     logger.info("[DEBUG] Tensor: " + tensor)
     logger.info("[DEBUG] Tensor type: " + str(type(tensor)))
     
-    return torch.as_tensor(tensor).detach().cpu().tolist()
+    return tensor.detach().cpu().tolist()
 
 def train(args, train_dataset, model, tokenizer):
     """ Train the model """
@@ -317,13 +317,20 @@ def evaluate(args, model, tokenizer, prefix=""):
                     )
             outputs = model(**inputs)
 
-        logger.info("[DEBUG] Outputs: " + str(outputs))
-        logger.info("[DEBUG] Outputs: " + str(type(outputs[0])))
         for i, feature_index in enumerate(feature_indices):
             eval_feature = features[feature_index.item()]
             unique_id = int(eval_feature.unique_id)
 
-            output = [to_list(output) for output in outputs]
+            logger.info("[DEBUG] Outputs: " + str(outputs))
+            logger.info("[DEBUG] Outputs: " + str(type(output[i])))
+            logger.info("[DEBUG] Ids: " + str(i) + " " + eval_feature)
+            result = []
+            for output in outputs:
+                logger.info("[DEBUG] > Output: " + output)
+                result.append(to_list(output[i]))
+            
+            output = result
+            # output = [to_list(output[i]) for output in outputs]
 
             # Some models (XLNet, XLM) use 5 arguments for their predictions, while the other "simpler"
             # models only use two.
