@@ -323,12 +323,12 @@ def evaluate(args, model, tokenizer, prefix=""):
 
             logger.info("[DEBUG] Outputs: " + str(outputs))
             logger.info("[DEBUG] Outputs: " + str(type(outputs[i])))
-            logger.info("[DEBUG] Ids: " + str(i) + " " + eval_feature)
+            logger.info("[DEBUG] Ids: " + str(i) + " " + str(eval_feature))
             result = []
             for output in outputs:
                 logger.info("[DEBUG] > Output: " + output)
                 logger.info("[DEBUG] > Output[i]: " + output[i])
-                result.append(to_list(output[i]))
+                result.append(output[i].detach().cpu().tolist()))
             
             output = result
             # output = [to_list(output[i]) for output in outputs]
