@@ -322,11 +322,12 @@ def evaluate(args, model, tokenizer, prefix=""):
             unique_id = int(eval_feature.unique_id)
 
             logger.info("[DEBUG] Outputs: " + str(outputs))
-            logger.info("[DEBUG] Outputs: " + str(type(output[i])))
+            logger.info("[DEBUG] Outputs: " + str(type(outputs[i])))
             logger.info("[DEBUG] Ids: " + str(i) + " " + eval_feature)
             result = []
             for output in outputs:
                 logger.info("[DEBUG] > Output: " + output)
+                logger.info("[DEBUG] > Output[i]: " + output[i])
                 result.append(to_list(output[i]))
             
             output = result
