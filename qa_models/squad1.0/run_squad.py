@@ -68,9 +68,10 @@ def set_seed(args):
 
 
 def to_list(tensor):
-    logger.info("[DEBUG] Tensor: ", tensor)
-    logger.info("[DEBUG] Tensor: ", str(type(tensor)))
-    return tensor.tolist()
+    logger.info("[DEBUG] Tensor: " + tensor)
+    logger.info("[DEBUG] Tensor type: " + str(type(tensor)))
+    
+    return tensor.detach().cpu().tolist()
 
 
 def train(args, train_dataset, model, tokenizer):
@@ -323,7 +324,7 @@ def evaluate(args, model, tokenizer, prefix=""):
             eval_feature = features[feature_index.item()]
             unique_id = int(eval_feature.unique_id)
 
-            output = [to_list(output[i]) for output in outputs]
+            output = [to_list(output) for output in outputs]
 
             # Some models (XLNet, XLM) use 5 arguments for their predictions, while the other "simpler"
             # models only use two.
