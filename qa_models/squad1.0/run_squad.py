@@ -71,8 +71,7 @@ def to_list(tensor):
     logger.info("[DEBUG] Tensor: " + tensor)
     logger.info("[DEBUG] Tensor type: " + str(type(tensor)))
     
-    return tensor.detach().cpu().tolist()
-
+    return torch.as_tensor(tensor).detach().cpu().tolist()
 
 def train(args, train_dataset, model, tokenizer):
     """ Train the model """
