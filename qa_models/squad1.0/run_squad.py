@@ -328,7 +328,7 @@ def evaluate(args, model, tokenizer, prefix=""):
             for output in outputs:
                 logger.info("[DEBUG] > Output: " + output)
                 logger.info("[DEBUG] > Output[i]: " + output[i])
-                result.append(output[i].detach().cpu().tolist()))
+                result.append(output[i].detach().cpu().tolist())
             
             output = result
             # output = [to_list(output[i]) for output in outputs]
