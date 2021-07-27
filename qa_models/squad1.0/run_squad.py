@@ -68,8 +68,6 @@ def set_seed(args):
 
 
 def to_list(tensor):
-    print("[DEBUG] tensor type: ", type(tensor))
-    print("[DEBUG] tensor: ", tensor)
     return tensor.detach().cpu().tolist()
 
 
