@@ -68,6 +68,7 @@ def set_seed(args):
 
 
 def to_list(tensor):
+    logger.info("FAZA debug "+str(tensor))
     return tensor.detach().cpu().tolist()
 
 
